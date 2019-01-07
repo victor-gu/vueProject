@@ -1,7 +1,19 @@
 @import "../../../static/css/var.scss";
 
 .header{
-    height: .78125rem;
-    background: red;
-    color:red;
+    line-height: 1.25rem;
+    background: $mainColor;
+    color: #fff;
+    font-size: .46875rem;
+    p{
+        text-align: center; 
+        overflow: hidden;
+        i{
+            font-size: .59375rem;
+            margin: 0 .15625rem 0 .15625rem;
+        }
+    }
+    .left{
+        float: left;
+    }
 }

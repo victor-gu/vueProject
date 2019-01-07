@@ -1,12 +1,12 @@
 <template>
     <div class="header">
-        <p><i class="fa fa-angle-left"></i>返回</p>
+        <p class="left"><i class="fa fa-angle-left"></i>返回</p>
         <p>内容</p>
     </div>
 </template>
 
 <script>
-
+import "./header.scss";
 export default {
 
 }
