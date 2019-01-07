@@ -1,10 +1,6 @@
 <template>
-    <div class="hello">
-        <mt-swipe :auto="4000">
-            <mt-swipe-item>1ffff</mt-swipe-item>
-            <mt-swipe-item>2ffff</mt-swipe-item>
-            <mt-swipe-item>3fff</mt-swipe-item>
-        </mt-swipe>
+    <div class="myAppColumn">
+        
     </div>
 </template>
 
