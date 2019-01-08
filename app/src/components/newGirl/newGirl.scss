@@ -1,0 +1,46 @@
+@import "../../../static/css/var.scss";
+
+.newGirl{
+    .cateList{
+        width: 100%;
+        overflow-x: auto;
+        ul{
+            width: 27.34375rem;
+            line-height: 1.09375rem;
+            overflow: hidden;
+            li{
+                float: left;
+                font-size: $generalFont;
+                margin: 0 .3125rem;
+            }
+        }
+    }
+    .imgList{
+        li{
+            width: 90%;
+            border-radius: .78125rem;
+            margin:0 auto;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: .3125rem;
+            img{
+                width: 100%;
+            }
+            p{
+                position: absolute;
+                left: .78125rem;
+                bottom: .46875rem;
+                font-size: $bigFont;
+                color: #fff;
+            }
+        }
+    }
+}
+
+
+// 图片懒加载
+image[lazy=loading] {
+    width: 40px;
+    height: 300px;
+    margin: auto;
+}
