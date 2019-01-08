@@ -4,7 +4,7 @@
         <div class="newGirl">
             <div class="cateList"> 
                 <ul>
-                    <li v-for="(item, index) in cateList" :key="index">
+                    <li v-for="(item, index) in cateList" :key="index" @click="query()">
                         {{item}}
                     </li>
                 </ul>
@@ -30,6 +30,9 @@ export default {
             cateList: [],
             imgList: []
         }
+    },
+    methods: {
+        
     },
     created: function(){
         // 查询列表
