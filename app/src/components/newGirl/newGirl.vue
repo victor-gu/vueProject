@@ -4,7 +4,7 @@
         <div class="newGirl">
             <div class="cateList"> 
                 <ul>
-                    <li v-for="(item, index) in cateList" :key="index" @click="query()">
+                    <li v-for="(item, index) in cateList" :key="index" @click="query(item)">
                         {{item}}
                     </li>
                 </ul>
@@ -32,10 +32,28 @@ export default {
         }
     },
     methods: {
-        
+        allImage: function(){
+            // 查询全部
+            http.post("126-2")
+            .then((data)=>{
+                this.imgList = data.data.showapi_res_body.pagebean.contentlist;
+            })
+            .catch((err)=>{
+            });
+        },
+        query: function(val){
+            this.imgList = [];
+            http.post("126-2", {type: val})
+            .then((data)=>{
+                this.imgList = data.data.showapi_res_body.pagebean.contentlist;
+                console.log(this.imgList);
+            })
+            .catch((err)=>{
+            });
+        }
     },
     created: function(){
-        // 查询列表
+        // 查询分类列表
         http.post("126-1")
         .then((data)=>{
             this.cateList = data.data.showapi_res_body.allTypeList;
@@ -45,12 +63,7 @@ export default {
         });
 
         // 查询全部
-        http.post("126-2")
-        .then((data)=>{
-            this.imgList = data.data.showapi_res_body.pagebean.contentlist
-        })
-        .catch((err)=>{
-        });
+        this.allImage();
     }
 }
 </script>
