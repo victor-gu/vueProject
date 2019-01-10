@@ -11,7 +11,7 @@
             </div>
 
             <ul class="imgList">
-                <li v-for="(item, index) in imgList" :key="index">
+                <li v-for="(item, index) in imgList" :key="index" @click="detail(item.imgList)">
                     <img v-lazy="item.avatarUrl">
                     <p>{{item.realName}}</p>
                 </li>
@@ -42,14 +42,21 @@ export default {
             });
         },
         query: function(val){
-            this.imgList = [];
-            http.post("126-2", {type: val})
-            .then((data)=>{
-                this.imgList = data.data.showapi_res_body.pagebean.contentlist;
-                console.log(this.imgList);
-            })
-            .catch((err)=>{
-            });
+            if(val == "全部"){
+                this.imgList = [];
+                this.allImage();
+            }else{
+                this.imgList = [];
+                http.post("126-2", {type: val})
+                .then((data)=>{
+                    this.imgList = data.data.showapi_res_body.pagebean.contentlist;
+                })
+                .catch((err)=>{
+                });
+            }
+        },
+        detail: function(val){
+            this.$router.push({name: "detailGirl", params: {imgList: JSON.stringify(val)}});
         }
     },
     created: function(){
