@@ -11,12 +11,13 @@
             </div>
 
             <ul class="imgList">
-                <li v-for="(item, index) in imgList" :key="index" @click="detail(item.imgList)">
-                    <img v-lazy="item.avatarUrl">
+                <li v-for="(item, index) in imgList" :key="index">
+                    <img v-lazy="item.avaGtarUrl">
                     <p>{{item.realName}}</p>
                 </li>
             </ul>
         </div>
+        <vue-preview :slides="slide1"></vue-preview>
     </div>
 </template>
 
@@ -28,7 +29,25 @@ export default {
     data: function(){
         return {
             cateList: [],
-            imgList: []
+            imgList: [],
+            slide1: [
+                        {
+                            src: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_b.jpg',
+                            msrc: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_m.jpg',
+                            alt: 'picture1',
+                            title: 'Image Caption 1',
+                            w: 600,
+                            h: 400
+                        },
+                        {
+                            src: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_b.jpg',
+                            msrc: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_m.jpg',
+                            alt: 'picture2',
+                            title: 'Image Caption 2',
+                            w: 1200,
+                            h: 900
+                        }
+                    ]
         }
     },
     methods: {
@@ -37,6 +56,7 @@ export default {
             http.post("126-2")
             .then((data)=>{
                 this.imgList = data.data.showapi_res_body.pagebean.contentlist;
+                // console.log(data.data.showapi_res_body.pagebean.contentlist);
             })
             .catch((err)=>{
             });
@@ -54,9 +74,6 @@ export default {
                 .catch((err)=>{
                 });
             }
-        },
-        detail: function(val){
-            this.$router.push({name: "detailGirl", params: {imgList: JSON.stringify(val)}});
         }
     },
     created: function(){

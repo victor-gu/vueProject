@@ -8,7 +8,6 @@ import classifyComponent from '@/components/classify/classify';
 import findComponent from '@/components/find/find';
 import myComponent from '@/components/my/my';
 import newGirlComponent from '@/components/newGirl/newGirl';
-import detailGirlComponent from '@/components/newGirl/detailGirl';
 
 export default new Router({
 	routes: [
@@ -40,11 +39,6 @@ export default new Router({
 			path: '/newGirl',
 			name: 'newGirl',
 			component: newGirlComponent
-		},
-		{
-			path: '/detailGirl/:imgList',
-			name: 'detailGirl',
-			component: detailGirlComponent
 		}
 	]
 });

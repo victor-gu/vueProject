@@ -21,6 +21,20 @@ import "../node_modules/font-awesome/scss/font-awesome.scss";
 import installer from "@/plugin/installer";
 Vue.use(installer);
 
+// vue-preview图片预览
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview, {
+    // mainClass: 'pswp--minimal--dark',
+    // barsSize: {top: 0, bottom: 0},
+    captionEl: false,
+    fullscreenEl: false,
+    shareEl: false,
+    bgOpacity: 0.8,
+    tapToClose: true,
+    tapToToggleControls: false
+});
+
+
 new Vue({
     el: '#app',
     router,
