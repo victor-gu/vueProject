@@ -32,6 +32,27 @@ function filterParams(params){
     return Object.assign({}, params, key)
 }
 
+import { Indicator } from 'mint-ui';
+
+// 开启loading
+axios.interceptors.request.use(function (config) {
+    Indicator.open({
+        text: '加载中...',
+        spinnerType: 'fading-circle'
+    });
+    return config;
+}, function (error) {
+    return Promise.reject(error);
+});
+ 
+// 关闭loading
+axios.interceptors.response.use(function (response) {
+    Indicator.close();
+    return response;
+}, function (error) {
+    return Promise.reject(error);
+});
+
 export default {
     get(url, params){
         return new Promise((resolve, reject) => {
