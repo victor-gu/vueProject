@@ -14,38 +14,15 @@ import notFoundComponent from "@/components/notFound/notFound";
 
 export default new Router({
 	routes: [
-		{ path: "/", redirect: "/home" },
-		{ path: '/home', name: 'home', component: HomeComponent },
-		{ path: '/classify', name: 'classify', component: classifyComponent },
-		{
-			path: '/find',
-			name: 'find',
-			component: findComponent
-		},
-		{
-			path: '/my',
-			name: 'my',
-			component: myComponent
-		},
-		{
-			path: '/newGirl',
-			name: 'newGirl',
-			component: newGirlComponent
-		},
-		{
-			path: "/login",
-			name: "login",
-			component: loginComponent
-		},
-		{
-			path: "/register",
-			name: "register",
-			component: registerComponent
-		},
-		{
-			path: "/notFound",
-			name: "notFound",
-			component: notFoundComponent
-		}
+		{ path: "/", redirect: "/home" },   // 重定向
+		{ path: "*", component: notFoundComponent },   // 匹配404
+		{ path: '/home', name: 'home', component: HomeComponent },   // 首页
+		{ path: '/classify', name: 'classify', component: classifyComponent },   // 分类
+		{ path: '/find', name: 'find', component: findComponent },    // 发现
+		{ path: '/my', name: 'my', component: myComponent },    // 我的
+		{ path: '/newGirl', name: 'newGirl', component: newGirlComponent },   // 淘女郎
+		{ path: "/login", name: "login", component: loginComponent },    // 登录
+		{ path: "/register", name: "register", component: registerComponent },   // 注册
+		{ path: "/notFound", name: "notFound", component: notFoundComponent }    // 404
 	]
 });
