@@ -29,25 +29,7 @@ export default {
     data: function(){
         return {
             cateList: [],
-            imgList: [],
-            // slide1: [
-            //             {
-            //                 src: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_b.jpg',
-            //                 msrc: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_m.jpg',
-            //                 alt: 'picture1',
-            //                 title: 'Image Caption 1',
-            //                 w: 600,
-            //                 h: 400
-            //             },
-            //             {
-            //                 src: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_b.jpg',
-            //                 msrc: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_m.jpg',
-            //                 alt: 'picture2',
-            //                 title: 'Image Caption 2',
-            //                 w: 1200,
-            //                 h: 900
-            //             }
-            //         ]
+            imgList: []
         }
     },
     methods: {
@@ -56,7 +38,6 @@ export default {
             http.post("126-2")
             .then((data)=>{
                 this.imgList = data.data.showapi_res_body.pagebean.contentlist;
-                console.log(this.imgList);
             })
             .catch((err)=>{
             });

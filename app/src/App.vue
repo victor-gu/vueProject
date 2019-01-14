@@ -1,10 +1,10 @@
 <template>
     <div id="myApp">
-        <firstHeader title="首页"></firstHeader>
+        <!-- <firstHeader title="首页"></firstHeader> -->
 		
         <router-view></router-view>
 		
-        <footerNav></footerNav>
+        <!-- <footerNav></footerNav> -->
     </div>
 </template>
 

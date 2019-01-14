@@ -21,6 +21,10 @@ import "../node_modules/font-awesome/scss/font-awesome.scss";
 import installer from "@/plugin/installer";
 Vue.use(installer);
 
+// animate动画
+import animate from "animate.css"; 
+Vue.use(animate)
+
 // vue-preview图片预览
 import VuePreview from 'vue-preview';
 Vue.use(VuePreview, {
