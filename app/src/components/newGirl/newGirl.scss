@@ -1,25 +1,35 @@
 @import "../../../static/css/var.scss";
 
-.newGirl{
-    .cateList{
-        width: 100%;
-        overflow-x: auto;
-        ul{
-            width: 27.34375rem;
-            line-height: 1.09375rem;
-            overflow: hidden;
-            li{
-                float: left;
-                font-size: $generalFont;
-                margin: 0 .3125rem;
-            }
+.cateList{
+    width: 100%;
+    overflow-x: auto;
+    ul{
+        width: 29.6875rem;
+        height: 1.09375rem;
+        overflow: hidden;
+        li{
+            float: left;
+            line-height: .78125rem;
+            text-align: center;
+            width: 1.5625rem;
+            font-size: $generalFont;
+        }
+        .active{
+            border-bottom: solid $mainColor .0625rem;
         }
     }
+}
+.newGirl{
     .imgList{
         li{
+            // 用于图片的预加载
+            line-height: 6.25rem;
+            background-color: #eeeeee;
+            text-align: center;
+
             width: 90%;
             border-radius: .78125rem;
-            margin:0 auto;
+            margin: auto;
             overflow: hidden;
             position: relative;
             margin-bottom: .3125rem;
@@ -30,8 +40,10 @@
                 position: absolute;
                 left: .78125rem;
                 bottom: .46875rem;
-                font-size: $bigFont;
                 color: #fff;
+                font-size: $bigFont;
+                font-weight: bolder;
+                line-height: .78125rem;
             }
         }
     }
@@ -39,8 +51,8 @@
 
 
 // 图片懒加载
-image[lazy=loading] {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-}
+img[lazy=loading] {
+    width: 1.5625rem !important;
+    height: 1.5625rem !important;
+    background: #eeeeee !important;
+  }

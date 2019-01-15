@@ -54,6 +54,19 @@ axios.interceptors.response.use(function (response) {
 });
 
 export default {
+    // 封装并发请求
+    all(arr){
+        return new Promise((resolve, reject)=>{
+            axios.all(arr)
+            .then(axios.spread(function(){
+                resolve(Object.values(arguments));
+            }))
+            .catch(error=>{
+                reject(error);
+            });
+        });
+    },
+    // 封装get请求
     get(url, params){
         return new Promise((resolve, reject) => {
             axios({
@@ -67,6 +80,7 @@ export default {
             });
         });
     },
+    // 封装post请求
     post(url, params){
         return new Promise((resolve, reject) => {
             axios({

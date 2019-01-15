@@ -1,11 +1,7 @@
 <template>
-    <div id="myApp">
-        <!-- <firstHeader title="首页"></firstHeader> -->
-		
-        <router-view></router-view>
-		
-        <!-- <footerNav></footerNav> -->
-    </div>
+	<!-- <keep-alive> -->
+		<router-view id="myApp"></router-view>
+	<!-- </keep-alive> -->
 </template>
 
 <script>

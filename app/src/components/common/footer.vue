@@ -1,6 +1,6 @@
 <template>
     <ul class="footer">
-        <li v-for="(item, index) in modules" :key="index" @click="active(item.route)" :class="classify==item.route ? 'active' : ''">
+        <li v-for="(item, index) in modules" :key="index" @click="router(item.route)" :class="{active: cutActive==item.route ? 'active' : ''}">
             <i :class="item.icon"></i>
             <span>{{item.title}}</span>
         </li>
@@ -12,7 +12,6 @@ export default {
     name: "footerNav",
     data: function(){
         return {
-            classify: "/home",
             modules: [
                 {title: "首页", icon: "fa fa-square-o", route: "/home"},
                 {title: "分类", icon: "fa fa-reorder", route: "/classify"},
@@ -22,9 +21,20 @@ export default {
         }
     },
     methods: {
-        active: function(par){
+        router: function(par){
             this.classify = par;
             this.$router.push(par);
+        }
+    },
+    props: {
+        active: {
+            type: String,
+            default: "/home"
+        }
+    },
+    computed: {
+        cutActive: function(){
+            return this.active.indexOf("/") > -1 ? this.active : "/"+this.active;
         }
     }
 }

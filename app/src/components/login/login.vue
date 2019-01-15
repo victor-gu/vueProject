@@ -46,7 +46,7 @@ import { Toast } from 'mint-ui';
 export default {
     data: function(){
         return {
-            num: Math.floor(Math.random()*1000)+1000,
+            num: Math.floor(Math.random()*10000),
             handShow: false,
             password: "",
             username: "",
@@ -55,7 +55,8 @@ export default {
     },
     methods: {
         rondom: function(){
-            this.num = Math.floor(Math.random()*1000)+1000;
+            this.num = Math.floor(Math.random()*10000);
+            this.code = "";
         },
         login: function(){
             if(this.username == ""){

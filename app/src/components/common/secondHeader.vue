@@ -12,7 +12,7 @@ export default {
     name: "secondHeader",
     methods: {
         goBack: function(){
-            console.log("返回");
+            this.$router.go(-1);
         }
     },
     props: {

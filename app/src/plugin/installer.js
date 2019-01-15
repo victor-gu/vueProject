@@ -11,7 +11,16 @@ import secondHeader from "@/components/common/secondHeader";
 // 底部
 import footerNav from "@/components/common/footer";
 
+// http请求
+import http from "@/utils/httpclient";
+
 installer.install = function(Vue){
+
+    // 挂载http请求
+    Vue.prototype.all = http.all;
+    Vue.prototype.get = http.get;
+    Vue.prototype.post = http.post;
+
     // 定义全局组件
     Vue.component(secondHeader.name, secondHeader);
     Vue.component(firstHeader.name, firstHeader);

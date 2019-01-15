@@ -1,27 +1,30 @@
 <template>
-    <div class="myAppColumn">
-        <div class="home">
-            <div class="swiper">
-                <mt-swipe :auto="4000">
-                    <mt-swipe-item v-for="(item, index) in inmgs" :key="index">
-                        <div class="bgImage" :style="{'background-image': 'url('+item+')'}"></div>
-                        <div class="bgTitle">{{title}}</div>
-                    </mt-swipe-item>
-                </mt-swipe>
-            </div>
+    <div>
+        <firstHeader title="首页"></firstHeader>
+        <div class="myAppColumn">
+            <div class="home">
+                <div class="swiper">
+                    <mt-swipe :auto="4000">
+                        <mt-swipe-item v-for="(item, index) in inmgs" :key="index">
+                            <div class="bgImage" :style="{'background-image': 'url('+item+')'}"></div>
+                            <div class="bgTitle">{{title}}</div>
+                        </mt-swipe-item>
+                    </mt-swipe>
+                </div>
 
-            <ul class="category">
-                <li v-for="(item, index) in modules" :key="index" @click="route(item.route)">
-                    <i :class="item.icon"></i>
-                    <p>{{item.msg}}</p>
-                </li>
-            </ul>
+                <ul class="category">
+                    <li v-for="(item, index) in modules" :key="index" @click="route(item.route)">
+                        <i :class="item.icon"></i>
+                        <p>{{item.msg}}</p>
+                    </li>
+                </ul>
+            </div>
         </div>
+        <footerNav active="home"></footerNav>
     </div>
 </template>
 
 <script>
-import http from "@/utils/httpclient";
 import './home.scss';
 export default {
     data: function(){
@@ -45,7 +48,7 @@ export default {
     },
     created: function(){
         // 轮播图请求
-        http.post("1287-1")
+        this.post("1287-1")
         .then((data)=>{
             this.title = data.data.showapi_res_body.data.subtitle;
             this.inmgs.push(data.data.showapi_res_body.data.img_1366);
