@@ -2,17 +2,18 @@ import Vue from 'vue';
 import Router from 'vue-router';
 Vue.use(Router);
 
-// 引入组件
-import HomeComponent from '@/components/home/home';
-import classifyComponent from '@/components/classify/classify';
-import findComponent from '@/components/find/find';
-import myComponent from '@/components/my/my';
-import newGirlComponent from '@/components/newGirl/newGirl';
-import loginComponent from '@/components/login/login';
-import registerComponent from "@/components/register/register";
-import notFoundComponent from "@/components/notFound/notFound";
+// 引入组件, 路由懒加载
+const HomeComponent = ()=> import('@/components/home/home');
+const classifyComponent = ()=> import('@/components/classify/classify');
+const findComponent = ()=> import('@/components/find/find');
+const myComponent = ()=> import('@/components/my/my');
+const newGirlComponent = ()=> import('@/components/newGirl/newGirl');
+const loginComponent = ()=> import('@/components/login/login');
+const registerComponent = ()=> import("@/components/register/register");
+const notFoundComponent = ()=> import("@/components/notFound/notFound");
 
 export default new Router({
+	mode: "history",
 	routes: [
 		{ path: "/", redirect: "/home" },   // 重定向
 		{ path: "*", component: notFoundComponent },   // 匹配404

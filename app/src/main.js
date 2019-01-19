@@ -11,6 +11,10 @@ import Mint from 'mint-ui';
 Vue.use(Mint);
 import "../node_modules/mint-ui/lib/style.css";
 
+// 自定义插件，局部引入mint-ui
+import myMintUi from "@/plugin/myMintUi";
+Vue.use(myMintUi);
+
 // 重置样式及全局变量
 import "../static/css/reset.css";
 
@@ -38,9 +42,17 @@ Vue.use(VuePreview, {
     tapToToggleControls: false
 });
 
+// vuex
+import store from "./store/store";
+
+// mixins
+import myMixins from "./plugin/myMixins";
+Vue.use(myMixins);
+
 
 new Vue({
     el: '#app',
+    store,
     router,
     components: { App },
     template: '<App/>'
