@@ -2,7 +2,7 @@
     <div>
         <firstHeader title="发现"></firstHeader>
         <div class="myAppColumn">
-            <p>我是发现</p>
+            发现
         </div>
         <footerNav active="find"></footerNav>
     </div>
@@ -10,7 +10,16 @@
 
 <script>
 export default {
-
+    data: function(){
+        return {
+            modules: [
+                {title: "手机号检测", route: "phone"},
+                {title: "手机号检测", route: "phone"},
+                {title: "手机号检测", route: "phone"},
+                {title: "手机号检测", route: "phone"},
+            ]
+        }
+    }
 }
 </script>
 

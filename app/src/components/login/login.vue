@@ -46,7 +46,7 @@ import { Toast } from 'mint-ui';
 export default {
     data: function(){
         return {
-            num: Math.floor(Math.random()*10000),
+            num: Math.floor(Math.random()*9000)+1000,
             handShow: false,
             password: "",
             username: "",
@@ -55,7 +55,7 @@ export default {
     },
     methods: {
         rondom: function(){
-            this.num = Math.floor(Math.random()*10000);
+            this.num = Math.floor(Math.random()*9000)+1000;
             this.code = "";
         },
         login: function(){
@@ -71,6 +71,10 @@ export default {
                 Toast({ message: '用户名或验证码错误', duration: 1000 });
             }else{
                 Toast({ message: '登录成功', duration: 1000});
+                // 设置cookie保存登录信息
+                var now = new Date();
+                now.setDate(now.getDate() + 1);
+                this.Cookie.set("loginState", "login", {expires: now});
                 setTimeout(()=>{
                     this.$router.push("/home");
                 }, 1000);
@@ -98,6 +102,15 @@ export default {
                 ele.previousElementSibling.classList.remove("active");
             }
         }
+    },
+    // 组件内的路由守卫，重置操作
+    beforeRouteEnter: function(to, from, next){
+        console.log(this);
+        next(vm=>{
+            vm.password = "";
+            vm.code = "";
+            vm.num = Math.floor(Math.random()*9000)+1000;
+        });
     }
 }
 

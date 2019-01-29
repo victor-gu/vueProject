@@ -1,7 +1,7 @@
 <template>
-	<!-- <keep-alive> -->
+	<keep-alive>
 		<router-view id="myApp"></router-view>
-	<!-- </keep-alive> -->
+	</keep-alive>
 </template>
 
 <script>

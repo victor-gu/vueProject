@@ -68,10 +68,10 @@ export default {
             }else if(this.password != this.surePassword){
                 Toast({ message: '密码不一致', duration: 1000 });
             }else{
-                Toast({ message: '注册成功', duration: 1000 });
+                Toast({ message: '目前暂不支持注册功能', duration: 1000 });
                 setTimeout(()=>{
                     this.$router.push("/login");
-                }, 1000);
+                }, 2000);
             }
         }
     },

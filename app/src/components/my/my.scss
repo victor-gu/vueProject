@@ -1,0 +1,19 @@
+@import "../../../static/css/var.scss";
+
+.myAppColumn{
+    .my{
+        color: $mainColor;
+        text-align: center;
+        font-size: $bigFont;
+        margin-top: 5%;
+    }
+    button{
+        line-height: 1.25rem;
+        width: 3.125rem;
+        background: $mainColor;
+        border-radius: .3125rem;
+        color: #fff;
+        margin-top: .78125rem;
+        font-size: $bigFont;
+    }
+}

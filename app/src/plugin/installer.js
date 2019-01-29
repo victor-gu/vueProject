@@ -14,12 +14,19 @@ import footerNav from "@/components/common/footer";
 // http请求
 import http from "@/utils/httpclient";
 
+// 公共方法
+import common from "@/utils/common";
+
+
 installer.install = function(Vue){
 
     // 挂载http请求
     Vue.prototype.all = http.all;
     Vue.prototype.get = http.get;
     Vue.prototype.post = http.post;
+
+    // 挂载公共方法
+    Vue.prototype.Cookie = common.cookie;
 
     // 定义全局组件
     Vue.component(secondHeader.name, secondHeader);
