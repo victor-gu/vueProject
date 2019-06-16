@@ -33,6 +33,12 @@ export default {
             this.active = route;
             this.$router.push("/classify"+route);
         }
+    },
+    beforeRouteEnter:function(from, to, next){
+        console.log(to);
+        next(vm => {
+            vm.active = "/phone";
+        });
     }
 }
 </script>
