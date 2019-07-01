@@ -1,0 +1,24 @@
+// sidebar
+$menuText:#fff;
+$menuActiveText:#409EFF;
+$subMenuActiveText:#fff;
+
+$menuBg:#001529;
+$menuHover:#20a8d8;
+
+$subMenuBg:#000c17;
+$subMenuHover:#20a8d8;
+
+$sideBarWidth: 200px;
+
+// the :export directive is the magic sauce for webpack
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}
