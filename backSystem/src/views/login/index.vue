@@ -2,6 +2,13 @@
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="off" label-position="left">
 
+      <!-- 解决Chrome自动填充问题 start -->
+      <div style="width:0px; height:0px; overflow: hidden;">
+        <el-input v-model="loginForm.username" name="username" type="text" tabindex="1" autocomplete="on" />
+        <el-input :key="passwordType" v-model="loginForm.password" :type="passwordType" name="password" tabindex="2" autocomplete="on" />
+      </div>
+      <!-- 解决Chrome自动填充问题 end -->
+
       <div class="title-container">
         <h3 class="title">vue后台项目</h3>
       </div>
@@ -31,7 +38,6 @@
           v-model="loginForm.password"
           :type="passwordType"
           placeholder="请输入密码"
-          name="password"
           tabindex="2"
           autocomplete="off"
           @keyup.enter.native="handleLogin"
@@ -136,7 +142,7 @@ export default {
 </script>
 
 <style lang="scss">
-$bg:#283443;
+$bg:#4e4e4e;
 $light_gray:#fff;
 $cursor: #fff;
 
