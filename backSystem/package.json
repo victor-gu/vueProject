@@ -1,7 +1,7 @@
 {
-  "name": "smart-station",
+  "name": "teamoly",
   "version": "1.0.0",
-  "description": "Smart gas station",
+  "description": "TeAmoly",
   "author": "Victor <1376295429@qq.com>",
   "license": "MIT",
   "scripts": {
@@ -19,6 +19,7 @@
     "axios": "0.18.0",
     "element-ui": "^2.9.2",
     "js-cookie": "2.2.0",
+    "mockjs": "^1.1.0",
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
     "particles.js": "^2.0.0",

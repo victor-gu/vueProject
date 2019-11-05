@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
 // import Base64 from 'js-base64';
 
-const TokenKey = 'smartToken';
-const UserId = 'smartUserId';
-const Expiration = 'smartExpiration';
+const TokenKey = 'teamolyToken';
+const UserId = 'teamolyUserId';
+const Expiration = 'teamolyExpiration';
 
 export function getToken() {
   return Cookies.get(TokenKey)
@@ -41,10 +41,3 @@ export function removeExpiration() {
   return Cookies.remove(Expiration)
 }
 
-// export function base64Encode(val) {
-//   return Base64.Base64.encode(val);
-// }
-
-// export function base64Decode(val) {
-//   return Base64.Base64.decode(val);
-// }

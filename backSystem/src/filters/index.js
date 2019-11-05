@@ -24,12 +24,3 @@ export function formatDate(data, fmt) {
     return fmt;
   }
 }
-
-// 处理空值
-export function notValue(value) {
-  if (value) {
-    return value;
-  } else {
-    return '暂无'
-  }
-}

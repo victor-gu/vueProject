@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      title: 'vue后台项目',
+      title: 'TeAmoly',
       logo: require('@/assets/logo/logo.png')
     }
   }

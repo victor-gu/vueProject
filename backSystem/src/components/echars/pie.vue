@@ -1,16 +1,31 @@
-// 数据  [{name: '', value: 100}]
+/*
+数据：
+{
+  name: '消费占比',
+  content: [
+    { value: 335, legendname: '会员', name: '会员' },
+    { value: 310, legendname: '非会员', name: '非会员' }
+  ]
+}
+*//
 <!-- 饼图 -->
 <template>
-  <div ref="pie" :style="{ height: height, width: width }"/>
+  <div ref="pie" :style="{ height: height, width: width }" />
 </template>
 
 <script>
 // 引入 ECharts 主模块
 var echarts = require('echarts/lib/echarts');
+// 引入饼图
+require('echarts/lib/chart/pie');
 // 引入提示框
 require('echarts/lib/component/tooltip');
+// 引入说明框
+require('echarts/lib/component/legendScroll');
 // 防抖
 import { debounce } from '@/utils';
+
+import { numToSn } from '@/utils';
 
 export default {
   name: 'Pie',
@@ -28,7 +43,7 @@ export default {
       default: true
     },
     chartData: {
-      type: Array,
+      type: Object,
       required: true
     }
   },
@@ -75,36 +90,70 @@ export default {
     pieConfigure() {
       let myChart = echarts.init(this.$refs.pie, 'light');
       this.chart = myChart;
+      let self = this;
       myChart.setOption({
+        title: [
+          {
+            text: '总金额',
+            subtext: '0',
+            textStyle: {
+              fontSize: 20,
+              color: 'black'
+            },
+            subtextStyle: {
+              fontSize: 14,
+              color: 'black'
+            },
+            textAlign: 'center',
+            x: '34.5%',
+            y: '42%'
+          }
+        ],
         tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)'
+          formatter: function(parms) {
+            var str = parms.seriesName + '</br>' +
+            parms.marker + '' + parms.data.legendname + '</br>' +
+            '金额：' + parms.data.value + '</br>' +
+            '占比：' + parms.percent + '%';
+            return str;
+          }
         },
         legend: {
           type: 'scroll',
           orient: 'vertical',
-          left: '10',
-          top: '6',
-          pageIconSize: 10,
-          tooltip: {
-            show: true
+          right: 10,
+          bottom: 10,
+          textStyle: {
+            color: '#8C8C8C'
           },
-          data: this.chartData.map(value => { return value.name })
+          height: 250
         },
         series: [
           {
-            name: '今日报警数量 / 总数',
+            name: self.chartData.name,
             type: 'pie',
-            radius: '55%',
-            center: this.chartData.length <= 3 ? ['50%', '50%'] : ['60%', '50%'],
-            data: this.chartData,
-            itemStyle: {
-              emphasis: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
+            center: ['35%', '50%'],
+            radius: ['40%', '65%'],
+            clockwise: false,
+            avoidLabelOverlap: false,
+            label: {
+              normal: {
+                show: true,
+                position: 'outter',
+                formatter: function(parms) {
+                  return parms.data.legendname
+                }
               }
-            }
+            },
+            labelLine: {
+              normal: {
+                length: 5,
+                length2: 3,
+                smooth: true
+              }
+            },
+            data: self.chartData.content
           }
         ]
       });
@@ -113,16 +162,18 @@ export default {
     // 异步数据
     asyncSetOptions(val) {
       this.chart.setOption({
-        legend: {
-          data: val.map(value => { return value.name })
-        },
+        title: [
+          {
+            subtext: numToSn(val.content.reduce((total, item) => { return total + item.value }, 0))
+          }
+        ],
         series: [
           {
-            type: 'pie',
-            data: val
+            data: val.content
           }
         ]
       });
+      if (this.chart) this.chart.resize();
     }
   }
 };

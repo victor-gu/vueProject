@@ -1,22 +1,3 @@
-import axios from '@/utils/globalAxios';
-
-export const image = function(eleement, binding, vnode) {
-  // img添加权限指令
-  if (binding.value !== 0 && binding.value && binding.oldValue !== binding.value) {
-    axios({
-      url: '/attachments/' + binding.value,
-      method: 'get',
-      responseType: 'arraybuffer'
-    }).then((response) => {
-      var mimeType = response.headers['content-type'].toLowerCase();
-      var imgBase64 = new Buffer(response.data, 'binary').toString('base64');
-      eleement.src = 'data:' + mimeType + ';base64,' + imgBase64;
-    }).catch((error) => {
-      console.log(error);
-    });
-  }
-}
-
 // dialog添加可拖拽指令
 export const dragDialog = {
   bind(el, binding, vnode) {

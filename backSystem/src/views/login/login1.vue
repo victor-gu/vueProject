@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="login-container1">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="off" label-position="left">
 
       <!-- 解决Chrome自动填充问题 start -->
@@ -10,44 +10,54 @@
       <!-- 解决Chrome自动填充问题 end -->
 
       <div class="title-container">
-        <h3 class="title">TeAmoly</h3>
+        <p class="title">TeAmoly</p>
+        <p class="forShort">TeAmoly</p>
       </div>
 
-      <el-form-item prop="username">
-        <span class="svg-container">
-          <svg-icon icon-class="user" />
-        </span>
-        <el-input
-          ref="username"
-          v-model="loginForm.username"
-          placeholder="请输入邮箱或手机号码"
-          name="username"
-          type="text"
-          tabindex="2"
-          autocomplete="off"
-        />
-      </el-form-item>
+      <div class="content">
 
-      <el-form-item prop="password">
-        <span class="svg-container">
-          <svg-icon icon-class="password" />
-        </span>
-        <el-input
-          :key="passwordType"
-          ref="password"
-          v-model="loginForm.password"
-          :type="passwordType"
-          placeholder="请输入密码"
-          tabindex="3"
-          autocomplete="off"
-          @keyup.enter.native="handleLogin"
-        />
-        <span class="show-pwd" @click="showPwd">
-          <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
-        </span>
-      </el-form-item>
+        <p class="hint">管理员账号：</p>
 
-      <el-button :loading="loading" type="primary" tabindex="4" style="width:100%; height:47px; border-radius:30px; font-size:15px;" @click.native.prevent="handleLogin">立即登陆</el-button>
+        <!-- 用户名 -->
+        <el-form-item prop="username">
+          <span class="svg-container">
+            <svg-icon icon-class="user" />
+          </span>
+          <el-input
+            ref="username"
+            v-model.trim="loginForm.username"
+            placeholder="请输入邮箱或手机号码"
+            name="username"
+            type="text"
+            tabindex="2"
+            autocomplete="off"
+          />
+        </el-form-item>
+
+        <p class="hint">管理员密码：</p>
+
+        <!-- 密码 -->
+        <el-form-item prop="password">
+          <span class="svg-container">
+            <svg-icon icon-class="password" />
+          </span>
+          <el-input
+            :key="passwordType"
+            ref="password"
+            v-model.trim="loginForm.password"
+            :type="passwordType"
+            placeholder="请输入密码"
+            tabindex="3"
+            autocomplete="off"
+            @keyup.enter.native="handleLogin"
+          />
+          <span class="show-pwd" @click="showPwd">
+            <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+          </span>
+        </el-form-item>
+
+        <el-button :loading="loading" type="primary" class="submit" tabindex="4" @click.native.prevent="handleLogin">立即登录</el-button>
+      </div>
 
     </el-form>
     <!-- particles.js container -->
@@ -60,7 +70,7 @@ import { validEmailOrPhone } from '@/utils/validate';
 import particles from './particles';
 
 export default {
-  name: 'Login',
+  name: 'Login1',
   data() {
     // 验证用户名
     const validateUsername = (rule, value, callback) => {
@@ -132,18 +142,18 @@ export default {
 </script>
 
 <style lang="scss">
-$bg:#4e4e4e;
-$light_gray:#fff;
-$cursor: #fff;
+$bg:#fff;
+$light_gray:#000;
+$cursor: #000;
 
 @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
-  .login-container .el-input input {
+  .login-container1 .el-input input {
     color: $cursor;
   }
 }
 
 /* reset element-ui css */
-.login-container {
+.login-container1 {
   .el-input {
     display: inline-block;
     height: 47px;
@@ -156,7 +166,7 @@ $cursor: #fff;
       border-radius: 0px;
       padding: 12px 5px 12px 15px;
       color: $light_gray;
-      height: 47px;
+      height: 43px;
       caret-color: $cursor;
 
       &:-webkit-autofill {
@@ -167,58 +177,80 @@ $cursor: #fff;
   }
 
   .el-form-item {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 30px;
-    padding: 0 10px;
+    height: 44px;
+    border-bottom: 1px solid #d7dde4;
     color: #454545;
   }
 }
 </style>
 
 <style lang="scss" scoped>
-$dark_gray:#fff;
-$light_gray:#eee;
-
-.login-container {
+.login-container1 {
   min-height: 100%;
   width: 100%;
-  background: url('../../assets/login/login-bg.jpg') center no-repeat;
+  background: url('../../assets/login/login-bg1.jpg') center no-repeat;
   background-size: cover;
   overflow: hidden;
   .login-form {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -65%);
-    width: 410px;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    background: #fff;
     overflow: hidden;
+    padding: 60px 0;
+    box-shadow: 0 5px 20px rgba(19, 32, 48, 0.25);
+    border-bottom: 5px #009688 solid;
   }
   .svg-container {
     padding: 6px 5px 6px 15px;
-    color: $dark_gray;
+    color: #4f5f6f;
     vertical-align: middle;
     width: 30px;
     display: inline-block;
   }
   .title-container {
-    position: relative;
+    text-align: center;
+    border-bottom: 1px #4bcf99 solid;
+    padding-bottom: 30px;
     .title {
-      font-size: 30px;
-      color: $light_gray;
-      margin: 0px auto 40px auto;
-      text-align: center;
-      font-weight: bold;
+      font-size: 22px;
+      color: #4f5f6f;
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: 10px;
+    }
+    .forShort{
+      font-size: 12px;
+      color: #d7dde4;
+      letter-spacing: 6px;
+      margin: 14px 0 0 0;
     }
   }
-  .show-pwd {
-    position: absolute;
-    right: 10px;
-    top: 7px;
-    font-size: 16px;
-    color: $dark_gray;
-    cursor: pointer;
-    user-select: none;
+  .content{
+    padding: 0 60px;
+    .hint{
+      color: #4f5f6f;
+      font-size: 14px;
+      margin: 30px 0 2px 0;
+    }
+    .submit{
+      width: 100%;
+      height: 40px;
+      border-radius: 12px;
+      font-size: 15px;
+      margin-top: 20px;
+    }
+    .show-pwd {
+      position: absolute;
+      right: 10px;
+      top: 7px;
+      font-size: 16px;
+      color: #4f5f6f;
+      cursor: pointer;
+      user-select: none;
+    }
   }
   #particles {
     width: 100vw;

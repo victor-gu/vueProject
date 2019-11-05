@@ -1,6 +1,6 @@
 import defaultSettings from '@/settings'
 
-const title = defaultSettings.title || 'vue后台项目'
+const title = defaultSettings.title || 'TeAmoly'
 
 export default function getPageTitle(pageTitle) {
   if (pageTitle) {

@@ -17,6 +17,9 @@ import router from './router'
 import '@/icons';
 import '@/permission';
 
+// 数据模拟
+require('./mock');
+
 // 登陆离子效果
 import particles from 'particles.js';
 Vue.use(particles);

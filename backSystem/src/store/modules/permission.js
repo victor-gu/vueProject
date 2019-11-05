@@ -71,7 +71,8 @@ const permission = {
       return new Promise(resolve => {
         let accessedRouters;
         // 管理员默认所有权限
-        if (data.admin) {
+        let admin = true;
+        if (admin) {
           accessedRouters = asyncRouterMap;
         } else {
           // 遍历角色对象，数组去重，roles为可访问的菜单数组

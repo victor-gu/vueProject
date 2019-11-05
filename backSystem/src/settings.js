@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'vue后台项目',
+  title: 'TeAmoly',
 
   showSettings: true,
 
