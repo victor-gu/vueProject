@@ -1,13 +1,12 @@
-import { login, logout, getInfo, refresh } from '@/api/login' // eslint-disable-line no-unused-vars
+import { login, logout, refresh } from '@/api/login' // eslint-disable-line no-unused-vars
 import { getToken, removeToken, getUserId, setUserId, removeUserId, getExpiration, removeExpiration } from '@/utils/auth'
-import { MessageBox } from 'element-ui';
+import { Toast } from 'vant';
 
 const user = {
   state: {
     token: getToken(),
     userId: getUserId(),
-    name: '',
-    roles: []
+    name: ''
   },
 
   mutations: {
@@ -19,9 +18,6 @@ const user = {
     },
     SET_NAME: (state, name) => {
       state.name = name
-    },
-    SET_ROLES: (state, roles) => {
-      state.roles = roles
     }
   },
 
@@ -34,19 +30,7 @@ const user = {
           // id
           setUserId(response.id);
           commit('SET_USERID', response.id)
-          resolve(response)
-        }).catch(error => {
-          reject(error)
-        })
-      })
-    },
-
-    // 获取用户信息
-    GetInfo({ commit, state }) {
-      return new Promise((resolve, reject) => {
-        getInfo(state.userId).then(response => {
           commit('SET_NAME', response.name)
-          commit('SET_ROLES', response.roles) // 用户权限
           resolve(response)
         }).catch(error => {
           reject(error)
@@ -61,7 +45,6 @@ const user = {
         commit('SET_TOKEN', '')
         commit('SET_USERID', '')
         commit('SET_NAME', '')
-        commit('SET_ROLES', [])
         // 清除token,userid
         removeToken()
         removeUserId();
@@ -79,7 +62,6 @@ const user = {
         commit('SET_TOKEN', '')
         commit('SET_USERID', '')
         commit('SET_NAME', '')
-        commit('SET_ROLES', [])
         // 清除token,userid
         removeToken()
         removeUserId();
@@ -104,7 +86,7 @@ const user = {
       const newTime = new Date().getTime();
       const aheadTime = 1000 * 60 * 5; // 五分钟内触发
       if (newTime >= expression) {
-        MessageBox.alert('您登陆已过期，请重新登陆！！！', '登陆过期', {
+        Toast.alert('您登陆已过期，请重新登陆！！！', '登陆过期', {
           confirmButtonText: '确定',
           showClose: false,
           center: true,
@@ -128,7 +110,7 @@ const user = {
         const expression = getExpiration();
         const newTime = new Date().getTime();
         if (newTime >= expression) {
-          MessageBox.alert('您登陆已过期，请重新登陆！！！', '登陆过期', {
+          Toast.alert('您登陆已过期，请重新登陆！！！', '登陆过期', {
             confirmButtonText: '确定',
             showClose: false,
             center: true,
