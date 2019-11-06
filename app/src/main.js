@@ -12,8 +12,6 @@ import store from './store'
 
 import router from './router'
 
-import '@/filters' // filters
-
 import '@/permission' // permission 权限
 
 import mountGlobal from '@/plugin/mountGlobal'
