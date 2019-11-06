@@ -39,7 +39,6 @@ export default {
         Toast('请输入密码');
       } else {
         this.$store.dispatch('Login', { username: this.username, password: this.password }).then((res) => {
-          console.log(res);
           if (res.id) { this.$router.push({ path: this.redirect || '/' }) }
         }).catch((err) => {
           if (err.response.status === 404 || err.response.status === 401) {

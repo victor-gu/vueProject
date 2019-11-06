@@ -16,7 +16,7 @@ const whiteList = ['/login'] // 不重定向白名单
 router.beforeEach((to, from, next) => {
   NProgress.start()
 
-  // 动画效果
+  // 页面动画效果
   const toIndex = history.getItem(to.path)
   const fromIndex = history.getItem(from.path)
   // 判断并记录跳转页面是否访问过，以此判断跳转过渡方式
@@ -33,7 +33,6 @@ router.beforeEach((to, from, next) => {
     store.dispatch('SetDirection', 'forward')
   }
 
-  console.log(store.state.direction.direction);
   if (getToken()) {
     if (whiteList.indexOf(to.path) !== -1) {
       next({ path: '/' })

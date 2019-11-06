@@ -1,6 +1,6 @@
 function mountGlobal() {}
 
-import { NavBar, Swipe, SwipeItem, Button, Field, CellGroup, Rate, tabbar, tabbarItem } from 'vant';
+import { NavBar, Swipe, SwipeItem, Button, Field, CellGroup, Rate, tabbar, tabbarItem, Lazyload } from 'vant';
 
 import * as filters from '@/filters';
 
@@ -20,6 +20,8 @@ mountGlobal.install = function(Vue) {
   Vue.component(Rate.name, Rate);
   Vue.component(tabbar.name, tabbar);
   Vue.component(tabbarItem.name, tabbarItem);
+
+  Vue.use(Lazyload);
 
   // 挂载全局过滤器
   Object.keys(filters).forEach(key => {

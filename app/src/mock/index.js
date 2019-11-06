@@ -1,5 +1,5 @@
 const Mock = require('mockjs')
-Mock.setup({ timeout: 100 });
+Mock.setup({ timeout: 1000 });
 
 import { setToken, setExpiration } from '@/utils/auth';
 

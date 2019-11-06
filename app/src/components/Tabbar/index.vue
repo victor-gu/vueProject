@@ -1,9 +1,7 @@
 <template>
   <div class="tabbar">
     <van-tabbar v-model="active" @change="change">
-      <van-tabbar-item icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item icon="friends-o">分类</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">我的</van-tabbar-item>
+      <van-tabbar-item v-for="(item, index) in routeList" :key="index" :name="item.routeName" :icon="item.icon">{{ item.name }}</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
@@ -14,18 +12,29 @@ export default {
   name: 'Tabbar',
   data() {
     return {
-      active: 2
+      active: this.$route.name,
+      routeList: [
+        {
+          name: '首页',
+          routeName: 'Home',
+          icon: 'wap-home'
+        },
+        {
+          name: '分类',
+          routeName: 'Category',
+          icon: 'shop'
+        },
+        {
+          name: '我的',
+          routeName: 'My',
+          icon: 'manager'
+        }
+      ]
     }
   },
   methods: {
     change(params) {
-      if (params === 0) {
-        this.$router.push({ name: 'Home' });
-      } else if (params === 1) {
-        this.$router.push({ name: 'Category' });
-      } else {
-        this.$router.push({ name: 'My' });
-      }
+      this.$router.push({ name: params });
     }
   }
 }

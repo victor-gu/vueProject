@@ -11,16 +11,10 @@
 
 export default {
   name: 'Layout',
-  data() {
-    return {
-    }
-  },
   computed: {
     transitionName() {
       return this.$store.state.direction.direction
     }
-  },
-  methods: {
   }
 }
 
