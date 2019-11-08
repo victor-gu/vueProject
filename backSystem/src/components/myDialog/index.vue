@@ -63,4 +63,10 @@ export default {
       overflow-y: auto;
     }
   }
+  .el-select{
+    width: 100%;
+  }
+  /deep/ .el-input{
+    width: 90% !important;
+  }
 </style>
